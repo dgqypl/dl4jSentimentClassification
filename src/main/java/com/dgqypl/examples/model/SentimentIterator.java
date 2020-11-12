@@ -48,7 +48,7 @@ import java.util.NoSuchElementException;
  *
  * @author Alex Black
  */
-public class SentimentExampleIterator implements DataSetIterator {
+public class SentimentIterator implements DataSetIterator {
     private final WordVectors wordVectors;
     private final int batchSize;
     private final int vectorSize;
@@ -66,7 +66,7 @@ public class SentimentExampleIterator implements DataSetIterator {
      * @param truncateLength If reviews exceed
      * @param train If true: return the training data. If false: return the testing data.
      */
-    public SentimentExampleIterator(String dataDirectory, WordVectors wordVectors, int batchSize, int truncateLength, boolean train) throws IOException {
+    public SentimentIterator(String dataDirectory, WordVectors wordVectors, int batchSize, int truncateLength, boolean train) throws IOException {
         this.batchSize = batchSize;
         this.vectorSize = wordVectors.getWordVector(wordVectors.vocab().wordAtIndex(0)).length;
 

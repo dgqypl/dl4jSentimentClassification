@@ -115,8 +115,8 @@ public class ImdbReviewClassificationRNN {
 
         //DataSetIterators for training and testing respectively
         WordVectors wordVectors = WordVectorSerializer.loadStaticModel(new File(wordVectorsPath));
-        SentimentExampleIterator train = new SentimentExampleIterator(DATA_PATH, wordVectors, batchSize, truncateReviewsToLength, true);
-        SentimentExampleIterator test = new SentimentExampleIterator(DATA_PATH, wordVectors, batchSize, truncateReviewsToLength, false);
+        SentimentIterator train = new SentimentIterator(DATA_PATH, wordVectors, batchSize, truncateReviewsToLength, true);
+        SentimentIterator test = new SentimentIterator(DATA_PATH, wordVectors, batchSize, truncateReviewsToLength, false);
 
         System.out.println("Starting training");
         net.setListeners(new ScoreIterationListener(1), new EvaluativeListener(test, 1, InvocationType.EPOCH_END));

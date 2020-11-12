@@ -36,9 +36,9 @@ import java.util.Collection;
  * Neural net that processes text into wordvectors. See below url for an in-depth explanation.
  * https://deeplearning4j.konduit.ai/language-processing/word2vec
  */
-public class Word2VecRawTextExample {
+public class Word2VecRawText {
 
-    private static Logger log = LoggerFactory.getLogger(Word2VecRawTextExample.class);
+    private static Logger log = LoggerFactory.getLogger(Word2VecRawText.class);
 
     public static String dataLocalPath;
 
