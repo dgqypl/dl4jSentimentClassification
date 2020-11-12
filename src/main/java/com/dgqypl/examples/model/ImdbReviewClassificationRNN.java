@@ -99,14 +99,14 @@ public class ImdbReviewClassificationRNN {
         //Set up network configuration
         MultiLayerConfiguration conf = new NeuralNetConfiguration.Builder()
             .seed(seed)
-            .updater(new Adam(5e-3))
-            .l2(1e-5)
-            .weightInit(WeightInit.XAVIER)
-            .gradientNormalization(GradientNormalization.ClipElementWiseAbsoluteValue).gradientNormalizationThreshold(1.0)
+            .updater(new Adam(5e-3)) // 使用Adam算法做为所有层的默认梯度更新器
+            .l2(1e-5) // l2正则系数
+            .weightInit(WeightInit.XAVIER) // 使用Xavier方法初始化权重
+            .gradientNormalization(GradientNormalization.ClipElementWiseAbsoluteValue).gradientNormalizationThreshold(1.0) // 梯度归一化策略，ClipElementWiseAbsoluteValue表示当梯度值在threshold之外时，会被裁剪为threshold值
             .list()
-            .layer(new LSTM.Builder().nIn(vectorSize).nOut(256)
+            .layer(new LSTM.Builder().nIn(vectorSize).nOut(256) // 定义模型的第一层，使用LSTM构建
                 .activation(Activation.TANH).build())
-            .layer(new RnnOutputLayer.Builder().activation(Activation.SOFTMAX)
+            .layer(new RnnOutputLayer.Builder().activation(Activation.SOFTMAX) // 定义模型的第二层（输出层）
                 .lossFunction(LossFunctions.LossFunction.MCXENT).nIn(256).nOut(2).build())
             .build();
 
