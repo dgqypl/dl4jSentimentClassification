@@ -223,24 +223,6 @@ public class SentimentIterator implements DataSetIterator {
         return FileUtils.readFileToString(f);
     }
 
-    /** Convenience method to get label for review */
-    public boolean isPositiveReview(int index){
-        return index%2 == 0;
-    }
-
-    /**
-     * Used post training to load a review from a file to a features INDArray that can be passed to the network output method
-     *
-     * @param file      File to load the review from
-     * @param maxLength Maximum length (if review is longer than this: truncate to maxLength). Use Integer.MAX_VALUE to not nruncate
-     * @return          Features array
-     * @throws IOException If file cannot be read
-     */
-    public INDArray loadFeaturesFromFile(File file, int maxLength) throws IOException {
-        String review = FileUtils.readFileToString(file, (Charset)null);
-        return loadFeaturesFromString(review, maxLength);
-    }
-
     /**
      * Used post training to convert a String to a features INDArray that can be passed to the network output method
      *
