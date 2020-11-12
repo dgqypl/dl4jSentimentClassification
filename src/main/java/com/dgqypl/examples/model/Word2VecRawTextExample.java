@@ -64,11 +64,11 @@ public class Word2VecRawTextExample {
 
         log.info("Building model....");
         Word2Vec vec = new Word2Vec.Builder()
-                .minWordFrequency(5)
-                .iterations(1)
-                .layerSize(100)
+                .minWordFrequency(5) // 单词在训练集中最少出现的次数，低于此值的单词在训练开始之前就会被移除
+                .iterations(1) // 每个mini-batch在训练时的迭代次数
+                .layerSize(100) // （输出的）词向量的维度数
                 .seed(42)
-                .windowSize(5)
+                .windowSize(5) // skip-Gram的上下文大小
                 .iterate(iter)
                 .tokenizerFactory(t)
                 .build();
